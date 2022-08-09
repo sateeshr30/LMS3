@@ -25,7 +25,7 @@ public class User {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+	private long userId;
 	
 	@NotNull
 	@Column(name="name")
@@ -43,6 +43,12 @@ public class User {
 	@NotNull
 	@Column(name="phone_number",unique = true)
 	private long phoneno;
+	
+	@Column(name="book_id")
+	private Long bookId;
+	
+	@Column(name="subscription_id")
+	private Long subscriptionId;
 	
 
 }

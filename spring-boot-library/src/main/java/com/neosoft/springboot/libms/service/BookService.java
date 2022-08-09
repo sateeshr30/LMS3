@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import com.neosoft.springboot.libms.model.Book;
 import com.neosoft.springboot.libms.repository.BookRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class BookService {
 	
@@ -16,9 +19,9 @@ public class BookService {
 	
 
 	
-	public void addBook(Book book) {
-		
-			bookRepository.save(book);
+	public Book addBook(Book book) {
+		log.info("Inside addBook method of BookService");
+		return	bookRepository.save(book);
 	}
 	
 	public Optional<Book> deleteBook(Long id) {
@@ -28,6 +31,11 @@ public class BookService {
 	
 	public List<Book> getAllBooks(){
 		return bookRepository.findAll();
+	}
+	
+	public Optional<Book> findBookById(Long bookId){
+		return bookRepository.findById(bookId);
+		
 	}
 	
 	

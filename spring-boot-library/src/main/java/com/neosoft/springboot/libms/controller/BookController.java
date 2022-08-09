@@ -10,21 +10,27 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.neosoft.springboot.libms.model.Book;
 import com.neosoft.springboot.libms.service.BookService;
 
+import lombok.extern.slf4j.Slf4j;
+
 @CrossOrigin(origins = "*")
 @RestController
+@RequestMapping("/book")
+@Slf4j
 public class BookController {
 	
 	@Autowired
 	BookService bookService;
 	
 	@PostMapping("/add/book")
-	public void addBook(@RequestBody Book book) {
-		bookService.addBook(book);
+	public Book addBook(@RequestBody Book book) {
+		log.info("Inside addBook method of BookController");
+		return bookService.addBook(book);
 	}
 	
 	
@@ -34,12 +40,16 @@ public class BookController {
 	}
 	
 	
-	@GetMapping("books")
+	@GetMapping("/allbooks")
 	public List<Book> getAllBooks(){
 		return bookService.getAllBooks();
 	}
 	
 
+	@GetMapping("/getbookbyid/{id}")
+	public void getBooksById(@PathVariable Long bookId){
+		bookService.findBookById(bookId);
+	}
 	
 	
 	@PutMapping("/book/update/{id}")

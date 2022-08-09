@@ -30,6 +30,8 @@ public class Subscription {
 	@Column(name = "returned_on")
 	private Date returnedOn;
 	
+	
+	
 
 	
 }
