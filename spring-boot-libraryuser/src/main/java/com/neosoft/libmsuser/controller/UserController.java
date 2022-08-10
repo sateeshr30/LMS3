@@ -1,6 +1,7 @@
 package com.neosoft.libmsuser.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -54,10 +55,18 @@ public class UserController {
 		return user1;
 	}
 	
+
+
+	@GetMapping("/usersbyid/{id}")
+	public Optional<User> getUsersById(@PathVariable long id){
+		return userService.getUsersById(id);
+	}
+	
+	
 	
 	@GetMapping("/{id}")
-	public ResponseTemplateVO getUserWithBook(@PathVariable Long userId) {
-		return userService.getUserWithBook(userId);
+	public ResponseTemplateVO getUserWithBook(@PathVariable long id) {
+		return userService.getUserWithBook(id);
 	}
 
 }

@@ -58,8 +58,7 @@ public ResponseTemplateVO getUserWithBook(Long userId) {
 	ResponseTemplateVO vo = new ResponseTemplateVO();
 	User user = userRepo.findByUserId(userId);
 	
-	Book book = 
-			restTemplate.getForObject("http://localhost:9002/book/" + user.getBookId(), Book.class);
+	Book book = restTemplate.getForObject("http://localhost:9002/book/bookbyid/" + user.getBookId(), Book.class);
 	
 	
 	vo.setUser(user);

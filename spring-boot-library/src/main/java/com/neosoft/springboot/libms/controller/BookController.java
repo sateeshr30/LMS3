@@ -1,6 +1,7 @@
 package com.neosoft.springboot.libms.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 
 import com.neosoft.springboot.libms.model.Book;
 import com.neosoft.springboot.libms.service.BookService;
@@ -27,7 +29,7 @@ public class BookController {
 	@Autowired
 	BookService bookService;
 	
-	@PostMapping("/add/book")
+	@PostMapping("/add")
 	public Book addBook(@RequestBody Book book) {
 		log.info("Inside addBook method of BookController");
 		return bookService.addBook(book);
@@ -46,9 +48,12 @@ public class BookController {
 	}
 	
 
-	@GetMapping("/getbookbyid/{id}")
-	public void getBooksById(@PathVariable Long bookId){
-		bookService.findBookById(bookId);
+
+	
+	@GetMapping("/bookbyid/{id}")
+	public Optional<Book> getBookById(@PathVariable long id){
+		return bookService.findBookById(id);
+	
 	}
 	
 	
