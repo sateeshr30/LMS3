@@ -56,6 +56,14 @@ public class BookController {
 	
 	}
 	
+	@GetMapping("/borrowbook/{id}")
+	public Optional<Book> borrowBookById(@PathVariable long id){
+		return bookService.findBookById(id);
+		
+	
+	
+	}
+	
 	
 	@PutMapping("/book/update/{id}")
 	public void updateBook(@PathVariable Long id, @RequestBody Book book) {
