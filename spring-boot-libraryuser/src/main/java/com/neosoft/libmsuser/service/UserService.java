@@ -9,6 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 import com.neosoft.libmsuser.VO.Book;
 import com.neosoft.libmsuser.VO.ResponseTemplateVO;
+import com.neosoft.libmsuser.VO.Subscription;
 import com.neosoft.libmsuser.model.User;
 import com.neosoft.libmsuser.repository.UserRepository;
 
@@ -84,6 +85,20 @@ public ResponseTemplateVO borrowBook(Long userId) {
 	
 	return vo;
 			
+	
+}
+
+public ResponseTemplateVO getUserWithSubscription(Long userId){
+	ResponseTemplateVO vo = new ResponseTemplateVO();
+	User user = userRepo.findByUserId(userId);
+	
+	Subscription subscription = restTemplate.getForObject("http://localhost:9003/subscription/getSubscription/" + user.getSubscriptionId(), Subscription.class);
+	
+	
+	vo.setUser(user);
+	vo.setSubscription(subscription);
+	
+	return vo;
 	
 }
 	

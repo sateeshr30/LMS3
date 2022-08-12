@@ -1,7 +1,6 @@
 package com.neosoft.libmsuser.VO;
 
-import com.neosoft.libmsuser.model.User;
-
+import java.util.Date;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,12 +8,11 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class ResponseTemplateVO {
+public class Subscription {
 	
-	private User user;
-	
-	private Book book;
-	
-	private Subscription subscription;
+	private Long subscriptionId;
+	private Date issueOn;
+	private Date dueDate;
+	private Date returnedOn;
 
 }
