@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.neosoft.springboot.libms.model.Book;
+import com.neosoft.springboot.libms.repository.BookRepository;
 import com.neosoft.springboot.libms.service.BookService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,6 +29,8 @@ public class BookController {
 	
 	@Autowired
 	BookService bookService;
+	
+	@Autowired BookRepository bookRepository;
 	
 	@PostMapping("/add")
 	public Book addBook(@RequestBody Book book) {
@@ -58,7 +61,9 @@ public class BookController {
 	
 	@GetMapping("/borrowbook/{id}")
 	public Optional<Book> borrowBookById(@PathVariable long id){
-		return bookService.findBookById(id);
+		Book b = bookRepository.getById(id);
+		return null;
+		
 		
 	
 	
