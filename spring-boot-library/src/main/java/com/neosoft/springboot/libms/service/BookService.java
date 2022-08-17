@@ -50,7 +50,15 @@ public class BookService {
 		bookRepository.save(book);
 	}
 	
+    public void borrowBook(Long noofbooks,Long id) {
 
+	bookRepository.updateNoOfBooks(noofbooks, id);
+	
+	Book b = bookRepository.getById(id);
+	Long n = b.getNoOfBooks();
+	n--;
+	
+}
 	
 	
 }
