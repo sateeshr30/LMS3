@@ -59,10 +59,9 @@ public class BookController {
 	
 	}
 	
-	@GetMapping("/borrowbook/{id}")
-	public Optional<Book> borrowBookById(@PathVariable long id){
-		Book b = bookRepository.getById(id);
-		return null;
+	@GetMapping("/borrowbook/{noofbooks}/{id}")
+	public void borrowBookById(@PathVariable long noofbooks, long id){
+		
 		
 		
 	
